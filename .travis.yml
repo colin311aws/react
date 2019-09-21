@@ -7,3 +7,16 @@ before_install:
 
 script:
   - docker run testme npm run test -- --coverage
+
+depoly:
+  provider: elastic beanstalk
+  region: "us-east-1"
+  app: "docker"
+  env: "docker-env"
+  bucket_name: "us-west-1-243172625123"
+  bucket_path: "docker"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secrue: "$AWS_SECRET_KEY"
